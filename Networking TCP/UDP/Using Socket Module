@@ -1,0 +1,84 @@
+install Socket module 
+command - pip install socket.py
+(To perfrom this program we need to open two terminal (python IDE)one for server & another for client)
+
+
+#TCP Protocal
+
+#Server side code Terminal 1.
+// Run this code frist  then client code  .
+//after clenit side code run run this server side code again.
+
+from socket import *
+s=socket(AF_INET,SOCK_STREAM)
+s.bind(("localhost",9999))
+s.listen(5)
+while True:
+    client,addr=s.accept()
+    print(addr,"joined the party")
+    client.send("you have joined successully".encode("ascii"))
+client.close()
+
+#client side code Terminal 2. /// run this code after server code run frist in 2 terminal
+from socket import *
+s=socket(AF_INET,SOCK_STREAM)
+s.connect(("localhost",9999))
+print(s.recv(1024).decode("ascii"))
+s.close()
+
+#UDP Protocal
+
+
+#Server side code Terminal 1.
+// Run this code frist  then client code  
+//after clenit side code run run this server side code again
+
+from socket import *
+
+# Create a UDP socket
+s = socket(AF_INET, SOCK_DGRAM)
+
+# Bind the socket to a specific IP address and port
+s.bind(("localhost", 9999))
+
+print("Server is running and waiting for messages...")
+
+while True:
+    # Receive data from a client
+    data, addr = s.recvfrom(1024)  # Buffer size is 1024 bytes
+    print(addr, "sent a message.")
+    
+    # Decode the received data to a string and print the message
+    message = data.decode("ascii")
+    print("Received message:", message)
+    
+    # Send a response back to the client
+    response = "You have joined successfully"
+    s.sendto(response.encode("ascii"), addr)
+    
+ s.close() 
+
+#client side code Terminal 2.
+ /// run this code after server code run frist in 2 terminal
+from socket import *
+
+# Create a UDP socket
+s = socket(AF_INET, SOCK_DGRAM)
+
+# Define the server's IP address and port
+server_address = ("localhost", 9999)
+
+# Send a message to the server
+message = "Hello, server!"
+s.sendto(message.encode("ascii"), server_address)
+
+# Receive the response from the server
+response, addr = s.recvfrom(1024)  # Buffer size is 1024 bytes
+
+# Decode the response and print it
+print(response.decode("ascii"))
+
+# Close the socket
+s.close()
+
+
