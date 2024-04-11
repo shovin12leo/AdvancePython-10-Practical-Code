@@ -1,0 +1,33 @@
+#1program to validate pincode
+
+import re
+ip=input("Enter the Value :")
+result=re.search(r'^[1-9]{1}[0-9]{5}$',ip)
+if(result==None):
+    print("invalid input.Please enter vaild value.")
+else:
+    print("input Accpected")
+
+#2program to vaildate Mobile number only (numeric value)
+import re
+ip=input("Enter the Value :")
+result=re.search(r'^[7-9]{1}[0-9]{9}$',ip)
+if(result==None):
+    print("invalid input.Please enter vaild value.")
+else:
+    print("input Accpected")
+
+#3program to count the number of vowels using regualr 
+import re
+ip=input("Input string :")
+result=re.findall(r'[aeiouAEIOU]',ip)
+print("Number of vowels in the input string are :",len(result))
+
+#4program vaildate the name (string)
+import re
+ip=input("Enter input string :")
+result=re.search(r'[a-zA-Z]*\s*[a-zA-Z]+$',ip)
+if(result==None):
+    print("invalid input.Please enter vaild value.")
+else:
+    print("input Accpected")
