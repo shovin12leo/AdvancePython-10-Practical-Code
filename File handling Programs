@@ -1,0 +1,40 @@
+Frist You need to save txt file work With module(example files upload checkout)
+#QC1
+f1=input("enter the file name : ")
+file_object=open(f1,"r")
+r=file_object.read(50)
+print("the content read from file is :",r)
+file_object.close()
+#QC2
+f1=input("Enter File name :")
+content=input("Enter the content  :")
+file_object=open(f1,"a+")
+file_object.write(content)
+file_object.close()
+#QC3
+"""fname=input("Enter name of the file :")
+f1=open(fname,"a+")
+for i in range (1,3):
+    sname=input("Enter Name :")
+    rno=int(input("Enter the Rollno. :"))
+    f1.write(str(rno)+" "+sname+"\n")
+f1.close()"""
+#QC4
+f1=open("product.txt","r")
+bill=0
+details=f1.readlines()
+for record in details:
+    value=record.split()
+    bill=bill+int(value[2])*int(value[3])
+print("Total bill is : ",bill)
+#QC5
+from zipfile import *
+f= ZipFile("files.zip",'w',ZIP_DEFLATED)
+f.write("fycs.txt")
+f.write("file1.txt")
+f.close()
+print("files.zip file Created successfully")
+f=ZipFile("files.zip",'r',ZIP_STORED)
+names=f.namelist()
+for name in names:
+    print("File name :",name)
