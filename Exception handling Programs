@@ -1,0 +1,40 @@
+#1program to raise an exception.
+try:
+    num=int(input("Enter Number: "))
+    print("Num =",num)
+except ValueError:
+    print("Wrong Value")
+#2 program to raise excpection (roll number is valid in range 1-120).
+try:
+    num=int(input("Enter Roll number: "))
+    if(num>120 or num<1):
+        raise Exception
+    else:
+        print("Correct Roll number=",num)
+except:
+    print("Wrong Value")
+
+#3program to raise excpection to know the use Finally.
+try:
+    num=int(input("Enter Numeric value: "))
+    print("You have Enter the correct value")
+except:
+    print("You have entered wrong value")
+else:
+    print("There is no Exception.")
+finally:
+    print("END OF THE PROGRAM")
+
+#4Program to implement user defined exception.
+
+class userdefinedException(Exception):
+    def __init__(self,msg):
+        self.message=msg
+try:
+    n=int(input("Enter numeric value:"))
+    if(n>120 or n<-1):
+        raise userdefinedException("Incorect roll number")
+    else:
+        print("You have Entered correct value.")
+except userdefinedException as u:
+    print(u.message)
